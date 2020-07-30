@@ -1,13 +1,13 @@
 import React from 'react';
 
 import SearchContainer from '../components/SearchContainer';
-import ResultsContainer from '../components/ResultsContainer';
+import SearchResultsContainer from '../components/SearchResultsContainer';
 
 function Search() {
     return (
         <div>
             <SearchContainer />
-            <ResultsContainer />
+            <SearchResultsContainer />
         </div>
     )
 }

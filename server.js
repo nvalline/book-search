@@ -1,14 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
+require('dotenv').config();
+
 const app = express();
 
 const PORT = process.env.PORT || 3001;
 
 // Connect DB
-const MONGO_LOCAL_URI = require('./config/keys').MongoURI;
-
-mongoose.connect(process.env.MONGODB_URI || MONGO_LOCAL_URI, {
+mongoose.connect(process.env.MONGODB_URI || process.env.MONGO_LOCAL_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,

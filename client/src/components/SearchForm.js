@@ -14,10 +14,11 @@ function SearchForm() {
 
         let searchTerm = bookState;
         searchTerm = searchTerm.search.toLowerCase();
-        console.log("SEARCH TERM:", searchTerm)
 
-        axios.get()
-            .then()
+        axios.get(`/api/search/${searchTerm}`)
+            .then(res => {
+                console.log("RES:", res)
+            })
             .catch(err => console.log(err));
     }
 

@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const apiRoutes = require('./routes/apiRoutes');
 
 require('dotenv').config();
 
@@ -16,6 +17,9 @@ mongoose.connect(process.env.MONGODB_URI || process.env.MONGO_LOCAL_URI, {
 })
     .then(console.log('MongoDB connected'))
     .catch(err => console.log(err));
+
+// API Routes
+app.use('/api', apiRoutes);
 
 // Connect Express Server
 app.listen(PORT, () => {

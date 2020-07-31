@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
+import { DataContext } from '../utils/DataContext';
 
 function SearchForm() {
     const [bookState, setBookState] = useState({ search: "" });
+    const [dataState, setDataState] = useContext(DataContext);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -17,9 +19,12 @@ function SearchForm() {
 
         axios.get(`/api/search/${searchTerm}`)
             .then(res => {
-                console.log("RES:", res)
+                const data = res.data;
+                setDataState(data);
             })
             .catch(err => console.log(err));
+
+        setBookState({ search: "" });
     }
 
     return (

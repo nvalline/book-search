@@ -1,18 +1,22 @@
 import React from 'react';
 
-function SearchResults() {
+function SearchResults({ link, image, title, authors, description }) {
+    const handleViewBtnClick = () => {
+        window.open(link, '_blank');
+    };
+
     return (
         <div className="border p-3">
             <div className="d-flex flex-row-reverse">
                 <button type="button" className="btn btn-dark ml-2">Save</button>
-                <button type="button" className="btn btn-info">View</button>
+                <button type="button" className="btn btn-info" onClick={handleViewBtnClick}>View</button>
             </div>
             <div className="media">
-                <img src="http://books.google.com/books/content?id=_oG_iTxP1pIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" className="align-self-center mr-3" alt="..." />
+                <img src={image} className="align-self-center mr-3" alt={title} />
                 <div className="media-body">
-                    <h5 className="mt-0">Flowers for Algernon</h5>
-                    <p>Written By: <span>Daniel Keyes</span></p>
-                    <p className="mb-0">Oscar-winning film Charly starring Cliff Robertson and Claire Bloom-a mentally challenged man receives an operation that turns him into a genius...and introduces him to heartache.</p>
+                    <h5 className="mt-0">{title}</h5>
+                    <p>Written By: <span>{authors}</span></p>
+                    <p className="mb-0">{description}</p>
                 </div>
             </div>
         </div>

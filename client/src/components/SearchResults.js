@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 function SearchResults({ id, link, image, title, authors, description }) {
     const darkBtn = "btn btn-dark ml-2";
@@ -11,14 +12,13 @@ function SearchResults({ id, link, image, title, authors, description }) {
     };
 
     const handleSaveBtnClick = () => {
-        console.log("ID:", id)
         axios.post(`/api/save/${id}`)
             .then(res => {
-                console.log("RES:", res.data)
                 if (res.data.status === "saved") {
+                    toast.success(res.data.msg);
                     setClassState(successBtn);
                 } else {
-                    console.log(res.data.msg)
+                    toast.warn(res.data.msg);
                 }
             })
             .catch(err => console.log(err));

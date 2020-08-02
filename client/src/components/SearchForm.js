@@ -28,22 +28,24 @@ function SearchForm() {
     }
 
     return (
-        <form className="mt-4">
-            <div className="form-group">
-                <input
-                    type="text"
-                    className="form-control"
-                    name="search"
-                    aria-describedby="bookSearch"
-                    placeholder="Enter the name of the book to search"
-                    value={bookState.search}
-                    onChange={handleInputChange}
-                />
-            </div>
-            <div className="d-flex flex-row-reverse">
-                <button type="submit" className="btn btn-primary" onClick={handleFormSubmit}>Submit</button>
-            </div>
-        </form>
+        <div>
+            <form className="mt-4">
+                <div className="form-group">
+                    <input
+                        type="text"
+                        className="form-control"
+                        name="search"
+                        aria-describedby="bookSearch"
+                        placeholder="Enter the name of the book to search"
+                        value={bookState.search}
+                        onChange={handleInputChange}
+                    />
+                </div>
+                <div className="d-flex flex-row-reverse">
+                    <button type="submit" className="btn btn-primary" onClick={handleFormSubmit}>Submit</button>
+                </div>
+            </form>
+        </div>
     )
 }
 

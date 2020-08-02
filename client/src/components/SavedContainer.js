@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import uuid from 'react-uuid';
 
 import SavedResults from './SavedResults';
@@ -19,11 +20,11 @@ function SavedContainer() {
     const handleDeleteBtnClick = (id) => {
         axios.delete(`/api/delete/${id}`)
             .then(res => {
-                if (res.data.status === 200) {
-                    console.log(res.data.msg)
+                if (res.data.status === "200") {
+                    toast.info('Book deleted from list');
                     setDbBookState(dbBookState.filter(book => book.id !== id));
                 } else {
-                    console.log(res.data.msg)
+                    toast.error('Something went wrong');
                 }
             })
             .catch(err => console.log(err));

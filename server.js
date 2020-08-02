@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const apiRoutes = require('./routes/apiRoutes');
+const path = require('path');
 
 require('dotenv').config();
 
@@ -20,6 +21,18 @@ mongoose.connect(process.env.MONGODB_URI || process.env.MONGO_LOCAL_URI, {
 
 // API Routes
 app.use('/api', apiRoutes);
+
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("./build"));
+    // server index.html if `/about` reached -> assets served through `express.static`
+    app.get("*", (req, res) =>
+        res.sendFile(path.join(__dirname, "./build/index.html"))
+    );
+} else {
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, "./client/public/index.html"));
+    });
+}
 
 // Connect Express Server
 app.listen(PORT, () => {

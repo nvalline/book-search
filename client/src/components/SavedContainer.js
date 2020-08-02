@@ -1,10 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import uuid from 'react-uuid';
+
+import SavedResults from './SavedResults';
 
 function SavedContainer() {
-    return (
-        <div className="rounded bg-light p-4">
-            <h2 className="h3">Saved Books</h2>
+    const [dbBookState, setDbBookState] = useState();
 
+    const fetchSavedBooks = () => {
+        axios.get("/api/saved_books")
+            .then(res => {
+                const data = res.data;
+                setDbBookState(data);
+            })
+            .catch(err => console.log(err));
+    }
+
+    const handleDeleteBtnClick = (id) => {
+        axios.delete(`/api/delete/${id}`)
+            .then(res => {
+                if (res.data.status === 200) {
+                    console.log(res.data.msg)
+                    setDbBookState(dbBookState.filter(book => book.id !== id));
+                } else {
+                    console.log(res.data.msg)
+                }
+            })
+            .catch(err => console.log(err));
+    }
+
+    useEffect(() => {
+        fetchSavedBooks();
+    }, []);
+
+    return (
+        <div>
+            {dbBookState ? dbBookState.map(book => (
+                <SavedResults
+                    key={uuid()}
+                    id={book.id}
+                    link={book.link}
+                    image={book.image}
+                    title={book.title}
+                    authors={book.authors}
+                    description={book.description}
+                    handleDelete={handleDeleteBtnClick}
+                />
+            )) : <h4 className="mt-4">There are no saved books.</h4>}
         </div>
     )
 }

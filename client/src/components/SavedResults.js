@@ -1,37 +1,19 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 
-function SearchResults({ id, link, image, title, authors, description }) {
-    const darkBtn = "btn btn-dark ml-2";
-    const successBtn = "btn btn-success ml-2";
-    const [classState, setClassState] = useState(darkBtn);
+function SavedResults({ id, link, image, title, authors, description, handleDelete }) {
 
     const handleViewBtnClick = () => {
         window.open(link, '_blank');
     };
-
-    const handleSaveBtnClick = () => {
-        console.log("ID:", id)
-        axios.post(`/api/save/${id}`)
-            .then(res => {
-                console.log("RES:", res.data)
-                if (res.data.status === "saved") {
-                    setClassState(successBtn);
-                } else {
-                    console.log(res.data.msg)
-                }
-            })
-            .catch(err => console.log(err));
-    }
 
     return (
         <div className="border p-3">
             <div className="d-flex flex-row-reverse">
                 <button
                     type="button"
-                    className={classState}
-                    onClick={handleSaveBtnClick}
-                >Save</button>
+                    className="btn btn-danger ml-2"
+                    onClick={() => handleDelete(id)}
+                >Delete</button>
                 <button
                     type="button"
                     className="btn btn-info"
@@ -54,4 +36,4 @@ function SearchResults({ id, link, image, title, authors, description }) {
     )
 }
 
-export default SearchResults;
+export default SavedResults;

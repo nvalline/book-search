@@ -23,7 +23,7 @@ router.get("/search/:query", async (req, res) => {
     res.send(data);
 });
 
-// Save Handles
+// Save Handle
 router.post("/save/:id", async (req, res) => {
     const searchTerm = req.params.id;
 
@@ -33,25 +33,18 @@ router.post("/save/:id", async (req, res) => {
         })
         .catch(err => console.log(err));
 
-    const bookId = data[0].id;
-    const bookTitle = data[0].volumeInfo.title;
-    const bookImage = data[0].volumeInfo.imageLinks.thumbnail;
-    const bookAuthors = data[0].volumeInfo.authors;
-    const bookDescription = data[0].volumeInfo.description;
-    const bookLink = data[0].volumeInfo.canonicalVolumeLink;
-
-    db.Books.findOne({ id: bookId })
+    db.Books.findOne({ id: data[0].id })
         .then(book => {
             if (book) {
                 res.send({ status: "notSaved", msg: "Book already saved" })
             } else {
                 db.Books.create({
-                    id: bookId,
-                    title: bookTitle,
-                    image: bookImage,
-                    authors: bookAuthors,
-                    description: bookDescription,
-                    link: bookLink
+                    id: data[0].id,
+                    title: data[0].volumeInfo.title,
+                    image: data[0].volumeInfo.imageLinks.thumbnail,
+                    authors: data[0].volumeInfo.authors,
+                    description: data[0].volumeInfo.description,
+                    link: data[0].volumeInfo.canonicalVolumeLink
                 }, (err, book) => {
                     if (err) throw err;
                     res.send({ status: "saved", msg: "Book saved" });
@@ -60,5 +53,27 @@ router.post("/save/:id", async (req, res) => {
         })
         .catch(err => console.log(err));
 });
+
+// Search DB Handle
+router.get("/saved_books", (req, res) => {
+    db.Books.find({})
+        .then(dbData => {
+            res.send(dbData);
+        })
+        .catch(err => console.log(err));
+});
+
+// Delete Handle
+router.delete("/delete/:id", (req, res) => {
+    const bookId = req.params.id;
+
+    db.Books.deleteOne({ id: bookId })
+        .then(book => {
+            if (book) {
+                res.send({ status: "200", id: bookId });
+            }
+        })
+        .catch(err => console.log(err));
+})
 
 module.exports = router;

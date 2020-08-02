@@ -11,7 +11,7 @@ function Header() {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                     <li className="nav-item active">
-                        <Link className="nav-link" to="/search">Search <span className="sr-only">(current)</span></Link>
+                        <Link className="nav-link" to="/search">Search</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/saved">Saved</Link>

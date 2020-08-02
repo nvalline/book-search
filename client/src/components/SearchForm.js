@@ -42,7 +42,7 @@ function SearchForm() {
                     />
                 </div>
                 <div className="d-flex flex-row-reverse">
-                    <button type="submit" className="btn btn-primary" onClick={handleFormSubmit}>Submit</button>
+                    <button type="submit" className="btn btn-primary" onClick={handleFormSubmit}>Search</button>
                 </div>
             </form>
         </div>

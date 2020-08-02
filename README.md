@@ -1,10 +1,10 @@
 ## Project Name
 
-# My Portfolio
+# Google Books Search
 
-<img src="./portfolio-v3.png" alt="Project Screenshot" max-height="400px">
+<img src="./img/book-search.png" alt="Project Screenshot" max-height="400px">
 
-> This portfolio is my third version.  For this version I have incorporated some of the latest technologies that I have learned.
+> This MERN stack application allows the user to search Google Books through their API. The user is able to view the book source or save the book information for future reference.
 
 #### [View The Site](https://nvalline.github.io/portfolio-v3/) - The project is live.
 
@@ -25,9 +25,11 @@
 
 ## Description
 
-This application was built to showcase my most up-to-date coding knowledge, professional information and projects that I have created.
+This MERN (MongoDB, Express, React, Node) application allows the user to search Google Books through their API for related books to the search keyword.  The application will return all related books in a clean UI to the user.
 
-This React.js application is fully responsive and utilizes some new tech that I have learned on top of the information that I have been learning in the coding bootcamp.
+The user is able to view the book source provided by Google.  The user is also able to save selected books to a saved book list.  The saved books are saved in a MongoDb and are retrieved by the application upon page load.
+
+The user is able to delete saved books for the saved books list.
 
 [Back To The Top](#project-name)
 
@@ -35,9 +37,9 @@ This React.js application is fully responsive and utilizes some new tech that I 
 
 ## Technologies
 
-![GitHub Top Language](https://img.shields.io/github/languages/top/nvalline/portfolio-v3) ![GitHub language count](https://img.shields.io/github/languages/count/nvalline/portfolio-v3)
+![GitHub Top Language](https://img.shields.io/github/languages/top/nvalline/book-search) ![GitHub language count](https://img.shields.io/github/languages/count/nvalline/book-search)
 
-- React.js, Javascript, node.js, HTML, CSS
+- React.js, Javascript, node.js, Express, MongoDB, Mongoose, HTML, Bootstrap
 
 [Back To The Top](#project-name)
 
@@ -55,7 +57,13 @@ Simply click the following link to load the application in your browser.
 
 ## How To Use
 
-Once the application is loaded in the browser, simply click the navigation links or buttons to navigate throughout the application.
+Once the application is loaded in the browser, simply click enter a search keyword in the input field and click the 'Search' button.
+
+The application will return results.  Click either the 'View' button to view the book source or the 'Save' button to save the book to the saved book list.
+
+Use the application navigation to select the 'Saved' page.
+
+Click either the 'View' button to view the book source or the 'Delete' button to delete the book from the saved book list.
 
 [Back To The Top](#project-name)
 

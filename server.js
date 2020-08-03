@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGODB_URI || process.env.MONGO_LOCAL_URI, {
 // API Routes
 app.use('/api', apiRoutes);
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV !== "production") {
     app.use(express.static("./build"));
     // server index.html if `/about` reached -> assets served through `express.static`
     app.get("*", (req, res) =>

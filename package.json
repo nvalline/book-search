@@ -7,10 +7,12 @@
   },
   "main": "server.js",
   "scripts": {
-    "dev": "concurrently \"nodemon server.js\" \"cd ./client && npm run start\"",
-    "start": "node server.js",
     "build": "cd ./client && npm run build",
-    "watch": "nodemon server.js"
+    "install-client": "cd ./client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "dev": "concurrently \"nodemon server.js\" \"cd ./client && npm run start\""
   },
   "author": "",
   "license": "ISC",

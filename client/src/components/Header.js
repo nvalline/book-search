@@ -11,10 +11,10 @@ function Header() {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <NavLink className="nav-link" activeClassName="active" to="/search">Search</NavLink>
+                        <NavLink className="nav-link" activeClassName="active" to={process.env.PUBLIC_URL + "/search"}>Search</NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink className="nav-link" activeClassName="active" to="/saved">Saved</NavLink>
+                        <NavLink className="nav-link" activeClassName="active" to={process.env.PUBLIC_URL + "/saved"}>Saved</NavLink>
                     </li>
                 </ul>
             </div>

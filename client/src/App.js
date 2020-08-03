@@ -27,9 +27,9 @@ function App() {
         <Header />
         <div className="container">
           <Hero />
-          <Route exact path="/" component={Search} />
-          <Route exact path="/search" component={Search} />
-          <Route exact path="/saved" component={Saved} />
+          <Route exact path={process.env.PUBLIC_URL + "/"} component={Search} />
+          <Route exact path={process.env.PUBLIC_URL + "/search"} component={Search} />
+          <Route exact path={process.env.PUBLIC_URL + "/saved"} component={Saved} />
         </div>
       </Router>
     </DataProvider>

@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === "production") {
     app.use(express.static("./client/build"));
     // server index.html if `/about` reached -> assets served through `express.static`
     app.get("*", (req, res) =>
-        res.sendFile(path.join(__dirname, "./build/index.html"))
+        res.sendFile(path.join(__dirname, "./client/build/index.html"))
     );
 } else {
     app.get("*", (req, res) => {

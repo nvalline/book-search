@@ -6,7 +6,7 @@
 
 > This MERN stack application allows the user to search Google Books through their API. The user is able to view the book source or save the book information for future reference.
 
-#### [View The Site](https://nvalline.github.io/portfolio-v3/) - The project is live.
+#### [View The Site](https://polar-ridge-98029.herokuapp.com/) - The project is live.
 
 ---
 
@@ -49,7 +49,7 @@ The user is able to delete saved books for the saved books list.
 
 Simply click the following link to load the application in your browser.
 
-#### [View The Site](https://nvalline.github.io/portfolio-v3/) - The project is live.
+#### [View The Site](https://polar-ridge-98029.herokuapp.com/) - The project is live.
 
 [Back To The Top](#project-name)
 

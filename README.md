@@ -54,7 +54,7 @@ Simply click the following link to load the application in your browser.
 [Back To The Top](#project-name)
 
 ---
-
+ 
 ## How To Use
 
 Once the application is loaded in the browser, simply click enter a search keyword in the input field and click the 'Search' button.
